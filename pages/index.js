@@ -1,7 +1,14 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+	const [success, setSuccess] = useState(false);
+	useEffect(() => {
+		if (window.location.search.includes('success=true')) {
+			setSuccess(true);
+		}
+	}, []);
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -11,10 +18,17 @@ export default function Home() {
 
 			<main className={styles.main}>
 				<h1 className={styles.title}>Contact me!</h1>
-
+				{success && (
+					<p style={{ color: 'green' }}>Successfully submitted form!</p>
+				)}
 				<div className={styles.grid}>
 					<div className={styles.card}>
-						<form name="contact" method="POST" data-netlify="true">
+						<form
+							action="/?success=true"
+							name="contact"
+							method="POST"
+							data-netlify="true"
+						>
 							<input type="hidden" name="form-name" value="contact" />
 							<p>
 								<label htmlFor="name">Name</label>
