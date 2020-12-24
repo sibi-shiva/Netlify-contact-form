@@ -28,6 +28,7 @@ export default function Home() {
 							name="contact"
 							method="POST"
 							data-netlify="true"
+							data-netlify-recaptcha="true"
 						>
 							<input type="hidden" name="form-name" value="contact" />
 							<p>
@@ -42,6 +43,7 @@ export default function Home() {
 								<label htmlFor="message">Message</label>
 								<textarea id="message" name="message"></textarea>
 							</p>
+							<div data-netlify-recaptcha="true"></div>
 							<p>
 								<button type="submit">Send</button>
 							</p>
